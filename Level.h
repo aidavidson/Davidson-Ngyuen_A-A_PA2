@@ -8,9 +8,7 @@ class Level {
         Level(char coin, char mushroom, char goomba, char koopaTroopa, char boss, char nothin, bool yesBoss) {
 
         };
-        ~Level() {
-
-        };
+        ~Level() {};
 };
 
 
