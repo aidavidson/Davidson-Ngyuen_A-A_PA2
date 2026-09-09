@@ -7,14 +7,15 @@ class Mario{
     private:
         int V;
         int coins;
-        std::string powerLevel;
-        std::string* powerLevels;
+        int x;
+        int y;
+        int powerLevel;
+        int powerLevels[3] = {0, 1, 2};
     public:
         Mario(int lives);
         ~Mario();
-        std::string increasePower(std::string currentPower);
-        std::string decreasePower(std::string currentPower);
-        std::string modPower(std::string object);
-};
+        int increasePower(int currentPower);
+        int decreasePower(int currentPower);
+    };
 
 #endif
