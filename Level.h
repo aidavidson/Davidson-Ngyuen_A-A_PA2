@@ -3,13 +3,9 @@
 
 class Level {
     private:
-        int coin;
-        int mushroom;
-        // add enemies for later when we have enemy class
-        // Enemy goomba;
-        // Enemy koopaTroopa;
+        char** grid;
     public:
-        Level() {
+        Level(char coin, char mushroom, char goomba, char koopaTroopa, char boss, char nothin, bool yesBoss) {
 
         };
         ~Level() {
