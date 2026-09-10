@@ -1,6 +1,8 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include "Mario.h"
 class Enemy{
     private:
@@ -9,9 +11,9 @@ class Enemy{
         int winOrLoss;
         bool dead;
     public:
-        Enemy();
+        Enemy(std::string type);
         ~Enemy();
-        void checkEnemiesDefeated();
+        int checkEnemiesDefeated();
         void battleEnemy();
 
 };
