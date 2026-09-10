@@ -8,6 +8,10 @@ Mario::Mario(int lives){
     powerLevel = 0;
     
 }
+
+Mario::Mario(){
+
+}
 Mario::~Mario(){
 
 }
@@ -27,11 +31,32 @@ int Mario::decreasePower(int currentPower){
         }
     }
 }
+void Mario::setDefeatedEnemies(){
+    enemiesDefeated += 1;
+}
+
 void Mario::loseLives(){
     V -= 1;
+    enemiesDefeated = 0;
 }
 int Mario::getEnemiesDefeated(){
     return enemiesDefeated;
 }
+void Mario::setX(){
+
+}
+void Mario::setY(){
+
+}
+int Mario::getLives(){
+    return V;
+}
+int Mario::getPower(){
+    return powerLevel;
+}
+void Mario::gainLives(){
+    V += 1;
+}
+
 
 
