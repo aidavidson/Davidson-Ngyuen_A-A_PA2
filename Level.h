@@ -4,8 +4,19 @@
 class Level {
     private:
         char** grid;
+        bool warpPipe = false;
+        bool complete = false;
+        char c;
+        char m;
+        char g; 
+        char k; 
+        char b; 
+        char x; 
+        char w;
+        int n;
     public:
-        Level(char coin, char mushroom, char goomba, char koopaTroopa, char boss, char nothin, bool yesBoss);
+        Level();
+        Level(int n, int coins, int mushrooms, int goombas, int koopaTroopas, int nothing);
         ~Level();
 };
 
