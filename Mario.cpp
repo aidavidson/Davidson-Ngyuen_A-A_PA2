@@ -27,6 +27,11 @@ int Mario::decreasePower(int currentPower){
         }
     }
 }
-
+void Mario::loseLives(){
+    V -= 1;
+}
+int Mario::getEnemiesDefeated(){
+    return enemiesDefeated;
+}
 
 

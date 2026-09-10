@@ -7,6 +7,7 @@ class Mario{
     private:
         int V;
         int coins;
+        int enemiesDefeated;
         int x;
         int y;
         int powerLevel;
@@ -16,6 +17,8 @@ class Mario{
         ~Mario();
         int increasePower(int currentPower);
         int decreasePower(int currentPower);
+        void loseLives();
+        int getEnemiesDefeated();
     };
 
 #endif
