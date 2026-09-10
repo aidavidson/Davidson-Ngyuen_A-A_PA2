@@ -8,7 +8,7 @@ class World {
         World();
         ~World();
 
-}
+};
 
 
 #endif
