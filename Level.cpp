@@ -1,7 +1,7 @@
 #include "Level.h"
 #include "Mario.h"
 
-Level::Level(int N) {
+Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int nothing, bool lastLevel) {
     n = N; //level size
     this -> warpPipe = false; //initialize variables
     this -> complete = false; //initialize variables
