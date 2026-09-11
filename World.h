@@ -7,7 +7,9 @@ class World {
         Level** levels = new Level*[L]; //pointer to an array of Levels, which need a pointer because it is an object
         int L; //number of levels
     public:
-        World(int L, int N);
+        World(int L, int N, int percentCoin, 
+        int percentMushroom, int percentGoombas,
+        int percentKoopas, int percentNothing);
         ~World();
 
 };
