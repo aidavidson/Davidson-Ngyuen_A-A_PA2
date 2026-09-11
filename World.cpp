@@ -4,7 +4,7 @@
 //constructor
 World::World(int L, int N) {
     this -> L = L;
-    for (int i = 0; i < L; i++) { //new array of level pointers
+    for (int i = 0; i < L; i++) { //new array of pointers to level objects
         Level* newLevel = new Level(N);
         levels[i] = newLevel;
     }
@@ -12,8 +12,8 @@ World::World(int L, int N) {
 
 //destructor
 World::~World() {
-    for (int i = 0; i < L; i++) {
-        delete levels[i];
+    for (int i = 0; i < L; i++) { //delete each arrays in array
+        delete levels[i]; 
     }
-    delete[] levels;
+    delete[] levels; //delete array
 };
