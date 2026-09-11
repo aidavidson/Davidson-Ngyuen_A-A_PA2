@@ -24,7 +24,7 @@ void Enemy::battleEnemy(){
             mario.setDefeatedEnemies();
         }else{
             if(mario.getPower() != 0){
-                mario.decreasePower(mario.getPower());
+                mario.decreasePower(mario.getPower(), 1);
             }else{
                 if(mario.getLives() != 0){
                     //end game
@@ -42,7 +42,7 @@ void Enemy::battleEnemy(){
             mario.setDefeatedEnemies();
         }else{
             if(mario.getPower() != 0){
-                mario.decreasePower(mario.getPower());
+                mario.decreasePower(mario.getPower(), 1);
             }else{
                 if(mario.getLives() != 0){
                     //end game

@@ -16,7 +16,7 @@ void Boss::fightBoss(){
     }else{
         //lose
         if(character.getPower() == 2){
-            character.
+            character.decreasePower(character.getPower(), 2);
         }
     }
 }

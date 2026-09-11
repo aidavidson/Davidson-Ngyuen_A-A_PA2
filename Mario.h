@@ -17,7 +17,7 @@ class Mario{
         Mario();
         ~Mario();
         int increasePower(int currentPower);
-        int decreasePower(int currentPower);
+        int decreasePower(int currentPower,int amount);
         void setDefeatedEnemies();
         int getPower();
         int getLives();

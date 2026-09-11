@@ -24,10 +24,10 @@ int Mario::increasePower(int currentPower){
     }
 }
 
-int Mario::decreasePower(int currentPower){
+int Mario::decreasePower(int currentPower, int amount){
     for(int i = 3; i > 0; i--){
         if(powerLevels[i] == powerLevel && powerLevel != 0){
-            powerLevel = powerLevels[i-1];
+            powerLevel = powerLevels[i-amount];
         }
     }
 }

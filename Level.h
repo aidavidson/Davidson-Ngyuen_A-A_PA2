@@ -1,9 +1,13 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 #include "Mario.h"
+#include <cstdlib>
+#include <ctime>
 
 class Level {
     private:
+        int* openSpots;
+        char* letters;
         char** grid;
         bool warpPipe = false;
         bool complete = false;

@@ -27,6 +27,7 @@ int fileProcessor::processFile(){
         std::cout << "input percentages do not equate to 100%" << std::endl;
         return 1;
     }
+    inputFile.close();
     return 0;
 }
 int fileProcessor::accessVal(int index){
