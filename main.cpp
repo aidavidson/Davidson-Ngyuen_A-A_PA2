@@ -1,3 +1,3 @@
 #include "Enemy.h"
-int main(){
+int main() {
 }
