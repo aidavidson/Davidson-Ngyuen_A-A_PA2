@@ -5,5 +5,7 @@
 #include "Enemy.h"
 
 class Environment {
-    
+    private:
+        Level
+    public:
 };
