@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "Mario.h"
+
 class Enemy{
     private:
         Mario mario;
