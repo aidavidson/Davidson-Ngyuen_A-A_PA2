@@ -2,11 +2,10 @@
 #include "Level.h"
 
 //constructor
-World::World() {
+World::World(int L, int N) {
     this -> L = L;
-    this -> N = N;
     for (int i = 0; i < L; i++) { //new array of level pointers
-        Level* newLevel;
+        Level* newLevel = new Level(N);
         levels[i] = newLevel;
     }
 };

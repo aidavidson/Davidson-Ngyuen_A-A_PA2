@@ -1,7 +1,7 @@
 #include "Level.h"
 
-Level::Level() {
-    this->n = n; //level size
+Level::Level(int N) {
+    n = N; //level size
     grid = new char*[n]; //Array of char pointers
 
     //allocate memory for each row
