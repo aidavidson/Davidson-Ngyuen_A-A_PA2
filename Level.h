@@ -1,11 +1,13 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 #include "Mario.h"
+#include "vector.h"
 #include <cstdlib>
 #include <ctime>
 
 class Level {
     private:
+        Vector* randomizedLocations;
         int* openSpots;
         char* letters;
         char** grid;
@@ -16,7 +18,8 @@ class Level {
         Level();
         Level(int N,int coins, int mushrooms, int goombas, int koopaTroopas, int nothing);//these are percentages and the bool, last level for the warp pipes
         ~Level();
-        void populateLevel();
+        void randomizeLevel();
+        void populateGrid();
 };
 
 #endif LEVEL_H
