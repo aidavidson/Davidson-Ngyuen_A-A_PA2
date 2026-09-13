@@ -13,6 +13,7 @@ class Level {
         char** grid;
         bool warpPipe = false;
         bool complete = false;
+        bool lastLevel = false;
         char c, m, g, k ,b ,x ,w ,n; //c: coin, m: mushroom, g: goomba, k: koopaTroopa, b: level boss, x: nothing, w: warp pipe, H: mario
     public:
         Level();
