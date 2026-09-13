@@ -1,4 +1,5 @@
 #include "Collectible.h"
+
 Collectible::Collectible(std::string type){
     mario = new Mario();
     this->type = type;

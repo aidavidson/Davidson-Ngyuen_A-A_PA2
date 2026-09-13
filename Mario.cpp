@@ -42,11 +42,11 @@ void Mario::loseLives(){
 int Mario::getEnemiesDefeated(){
     return enemiesDefeated;
 }
-void Mario::setX(){
-
+void Mario::setX(int val){
+    x = val;
 }
-void Mario::setY(){
-
+void Mario::setY(int val){
+    y = val;
 }
 int Mario::getLives(){
     return V;
