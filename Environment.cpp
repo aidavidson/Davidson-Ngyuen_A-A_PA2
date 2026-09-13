@@ -11,7 +11,6 @@ Environment::Environment() {
     Coin = new Collectible("Coin");
     Mushroom = new Collectible("Mushroom");
     warpPipe = false;
-
 }
 
 Environment::~Environment() {
@@ -23,8 +22,8 @@ Environment::~Environment() {
 }
 
 void nextLevel(){
-    if(){
-
+    if() {
+        
     }
 }
 
