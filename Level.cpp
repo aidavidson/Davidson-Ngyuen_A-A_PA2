@@ -75,4 +75,14 @@ void Level::populateGrid(){
     for(int i = 0; i < n*n-1; i++){
         grid[randomizedLocations[i].getX()][randomizedLocations[i].getY()] = randomizedLocations[i].getType();
     }
+    int randomX = rand() % n;
+    int randomY = rand() % n;
+
+    grid[randomX][randomY] = 'w';
+
+    int randomX = rand() % n;
+    int randomY = rand() % n;
+
+    grid[randomX][randomY] = 'b';
+    
 }

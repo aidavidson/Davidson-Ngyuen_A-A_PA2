@@ -1,11 +1,21 @@
 #include "Level.h"
 #include "Mario.h"
-#include "Boss.h"
-#include "World.h"
 #include "Enemy.h"
+#include "Collectible.h"
 
 class Environment {
     private:
-        Level
+        Enemy* Boss;
+        Enemy* Goomba;
+        Enemy* Koopa;
+        Collectible* Coin;
+        Collectible* Mushroom;
+        bool warpPipe;
+
     public:
+        Environment();
+        ~Environment();
+        void nextLevel();
+        void gameOver();
+        void setWarpPipe();
 };

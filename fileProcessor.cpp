@@ -15,7 +15,11 @@ int fileProcessor::processFile(){
     if(inputFile.is_open()){
         int i = 0;
         while(std::getline(inputFile, val)){
-            arr[i] = stoi(val);
+            if(i > 2){
+                arr[i] = arr[1]* arr[i]/100;
+            }else{
+                arr[i] = stoi(val);
+            }
             i++;
         }
     }

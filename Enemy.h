@@ -6,16 +6,16 @@
 #include "Mario.h"
 class Enemy{
     private:
-        Mario mario;
+        Mario* mario;
         std::string type;
-        int winOrLoss;
-        bool dead;
-    public:
-        Enemy(std::string type);
-        ~Enemy();
-        int checkEnemiesDefeated();
-        void battleEnemy();
+        int percentWin;
+        int numDecrease;
+        bool loss;
 
+    public:
+        Enemy(std::string type, int percentWin,int numDecrease);
+        ~Enemy();
+        void fightMario();        
 };
 
 #endif

@@ -26,6 +26,7 @@ class Mario{
         int getEnemiesDefeated();
         void setX();
         void setY();
+        void collectCoin();
     };
 
 #endif
