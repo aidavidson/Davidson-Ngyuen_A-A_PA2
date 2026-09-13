@@ -10,6 +10,7 @@ World::World(int L, int N, int percentCoin,
         Level* newLevel = new Level(N, percentCoin, percentMushroom, percentGoombas, percentKoopas, percentNothing);
         levels[i] = newLevel;
     }
+    currentLevel = -1;
 };
 
 //destructor
@@ -19,3 +20,15 @@ World::~World() {
     }
     delete[] levels; //delete array
 };
+
+int World::getLevel(){
+    return currentLevel;
+}
+
+int World::setLevel(){
+    if(L <= currentLevel){
+        return -1;
+    }else if(L > currentLevel){
+        currentLevel+=1;
+    }
+}

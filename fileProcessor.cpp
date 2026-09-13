@@ -1,4 +1,5 @@
 #include "fileProcessor.h"
+#include 
 fileProcessor::fileProcessor(std::string input, std::string output){
     inputTxt = input;
     outputTxt = output;
@@ -16,7 +17,7 @@ int fileProcessor::processFile(){
         int i = 0;
         while(std::getline(inputFile, val)){
             if(i > 2){
-                arr[i] = arr[1]* arr[i]/100;
+                arr[i] = arr[1]*arr[1]* arr[i]/100;
             }else{
                 arr[i] = stoi(val);
             }
@@ -36,4 +37,8 @@ int fileProcessor::processFile(){
 }
 int fileProcessor::accessVal(int index){
     return arr[index];
+}
+
+int fileProcessor::outputFile(std::string total){
+    
 }

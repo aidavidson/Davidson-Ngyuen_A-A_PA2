@@ -1,6 +1,6 @@
 #include "Level.h"
 
-Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int nothing) {
+Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int nothing, int currentLevel, int numLevels) {
     openSpots = new int[5];
     openSpots[0] = coins;
     openSpots[1] = mushrooms;
@@ -75,14 +75,28 @@ void Level::populateGrid(){
     for(int i = 0; i < n*n-1; i++){
         grid[randomizedLocations[i].getX()][randomizedLocations[i].getY()] = randomizedLocations[i].getType();
     }
-    int randomX = rand() % n;
-    int randomY = rand() % n;
+    if(currentLevel != (numLevels-1)){
+        int randomX = rand() % n;
+        int randomY = rand() % n;
 
-    grid[randomX][randomY] = 'w';
+        grid[randomX][randomY] = 'w';
+    }
 
     int randomX = rand() % n;
     int randomY = rand() % n;
 
     grid[randomX][randomY] = 'b';
     
+}
+
+std::string Level::printLevel(){
+    std::string print;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            print += grid[i][j];
+            print += " ";
+        }
+        print += "\n";
+    }
+    print += "==========";
 }

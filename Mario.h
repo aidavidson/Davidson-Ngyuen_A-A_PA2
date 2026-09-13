@@ -24,8 +24,8 @@ class Mario{
         void loseLives();
         void gainLives();
         int getEnemiesDefeated();
-        void setX();
-        void setY();
+        void setX(int val);
+        void setY(int val);
         void collectCoin();
     };
 

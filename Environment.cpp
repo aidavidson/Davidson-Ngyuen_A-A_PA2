@@ -23,11 +23,15 @@ Environment::~Environment() {
 }
 
 void nextLevel(){
-    if()
-}
-void gameOver(){
+    if(){
 
+    }
 }
-void setWarpPipe(){
+
+void Environment::gameOver(){
+    
+}
+
+void Environment::setWarpPipe(){
     warpPipe = true;
 }
