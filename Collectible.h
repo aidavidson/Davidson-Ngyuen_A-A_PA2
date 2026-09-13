@@ -4,12 +4,19 @@
 #include <string>
 class Collectible{
     private:
-        Mario* mario;
+        // the pointer which allows the mario from main to be referenced in this class
+        Mario* player;
+        // the type of object mario collides with
         std::string type;
     public:
-        Collectible(std::string type);
+        //constructor/destructor
+        Collectible(std::string type, Mario* mario);
         ~Collectible();
+        // increases marios coins
         void collectCoin();
+        // increases marios Power
         void collectMushroom();
+        // if mario collides with warp pipe enter new level
+        void warpPipe();
 };
 #endif

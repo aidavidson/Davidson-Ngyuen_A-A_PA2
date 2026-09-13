@@ -34,16 +34,22 @@ void Vector::setType(char c){
 //set to normal placeholder indexes, empty. empty vectors. not random. 
 Vector* Vector::populateList(int n){
     Vector* arr = new Vector[n*n];
-    //for each element in the array
-    //convert to n * n matrix to 1d array of grids
-    for(int i = 0; i < n; i++){ //to be fixed
+    
+    //preserves the index of the 1d array which is being populated
+    int index;
+    
+    //a for loop which allows the method to set row index and column index properly
+    for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            arr[i+j].setX(i);
-            arr[i+j].setY(j);
-            arr[i+j].setChosen(false);
-        } //pass by reference, from vector
+
+            //set the proper instance variables of the objects
+            arr[index].setX(i);
+            arr[index].setY(j);
+            arr[index].setChosen(false);
+
+            //incrememnts index so we know one has been filled so we move to the next
+            index++;
+        }
     }
-
-
-    delete[] arr;
+    return arr;
 }

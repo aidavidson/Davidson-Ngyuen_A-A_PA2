@@ -1,15 +1,18 @@
 #include "Collectible.h"
 
-Collectible::Collectible(std::string type){
-    mario = new Mario();
+Collectible::Collectible(std::string type, Mario* mario){
+    player = mario;
     this->type = type;
 }
 Collectible::~Collectible(){
-    delete mario;
+    delete player;
 }
 void Collectible::collectCoin(){
-    mario->collectCoin();
+    // just collects coin in mario class
+    player->collectCoin();
 }
+
 void Collectible::collectMushroom(){
-    mario->increasePower(mario->getPower());
+    //increases power based on marios current power
+    player->increasePower(player->getPower());
 }

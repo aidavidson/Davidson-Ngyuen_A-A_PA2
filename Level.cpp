@@ -23,6 +23,8 @@ Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int
     }
     randomizeLevel();
     populateGrid();
+
+    complete = false;
 }
 
 bool Level::isComplete() {
@@ -105,4 +107,7 @@ std::string Level::printLevel(){
         print += "\n";
     }
     print += "==========";
+}
+bool Level::isComplete(){
+    return complete;
 }

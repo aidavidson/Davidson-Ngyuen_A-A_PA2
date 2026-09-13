@@ -16,7 +16,7 @@ Mario::~Mario(){
 
 }
 
-int Mario::increasePower(int currentPower){
+void Mario::increasePower(int currentPower){
     for(int i = 0; i < 3; i++){
         if(powerLevels[i] == powerLevel && powerLevel != 2){
             powerLevel = powerLevels[i+1];
@@ -24,14 +24,14 @@ int Mario::increasePower(int currentPower){
     }
 }
 
-int Mario::decreasePower(int currentPower, int amount){
+void Mario::decreasePower(int currentPower, int amount){
     for(int i = 3; i > 0; i--){
         if(powerLevels[i] == powerLevel && powerLevel != 0){
             powerLevel = powerLevels[i-amount];
         }
     }
 }
-void Mario::setDefeatedEnemies(){
+void Mario::increaseDefeatedEnemies(){
     enemiesDefeated += 1;
 }
 
@@ -59,5 +59,8 @@ void Mario::gainLives(){
     V += 1;
 }
 
+void Mario::collectCoin(){
+    coins += 1;
+}
 
 

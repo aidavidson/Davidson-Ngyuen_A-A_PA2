@@ -16,6 +16,8 @@ class World {
         int setLevel();
         int getLevel();
 
+        bool isCurrentLevelComplete();
+
 };
 
 

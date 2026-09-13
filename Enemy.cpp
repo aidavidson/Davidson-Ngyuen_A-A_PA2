@@ -1,6 +1,6 @@
 #include "Enemy.h"
-Enemy::Enemy(std::string type, int percentWin,int numDecrease){
-    mario = new Mario();
+Enemy::Enemy(std::string type, int percentWin,int numDecrease, Mario* mario){
+    player = mario;
     this->type = type;
     this->percentWin = percentWin;
     this->numDecrease = numDecrease;
@@ -15,8 +15,8 @@ void Enemy::fightMario(){
     if(randomNumber <= percentWin){
 
     }else{
-        if(mario->getPower() > numDecrease){
-            mario->decreasePower(mario->getPower(), numDecrease);
+        if(player->getPower() > numDecrease){
+            player->decreasePower(player->getPower(), numDecrease);
         }
     }
 }

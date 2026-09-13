@@ -3,21 +3,29 @@
 #include "Enemy.h"
 #include "Collectible.h"
 
+
 //what happens to mario when he interacts and maybe vice versa
 class Environment {
     private:
+        Mario* player;
         Enemy* Boss;
         Enemy* Goomba;
         Enemy* Koopa;
         Collectible* Coin;
         Collectible* Mushroom;
-        bool warpPipe;
+        bool gameComplete;
         Level* currentLevel = nullptr;
 
     public:
-        Environment();
+        Environment(Mario* mario);
         ~Environment();
+        // if mario hits a warp pipe he moves to next level
         void nextLevel();
+        // if mario hits an enemy is P0 and has 1 life he dies and loses
         void gameOver();
-        void setWarpPipe();
+        //25 percent chance for each direction
+        void marioMove();
+        //checks if mario won already
+        bool isGameWon();
+
 };

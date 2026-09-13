@@ -1,16 +1,16 @@
 #include "Environment.h" 
 #include "Level.h"
 
-Environment::Environment() {
-    //have mario move
-    //deal with 5 specific cases for that level
-    //then, for the specific rows, we might need level, but how to declare it?
-    Boss = new Enemy("Boss", 50, 2);
-    Goomba = new Enemy("Goomba", 80, 1);
-    Koopa = new Enemy("Koopa", 65, 1);
-    Coin = new Collectible("Coin");
-    Mushroom = new Collectible("Mushroom");
-    warpPipe = false;
+Environment::Environment(Mario* mario) {
+    //these are the different objects mario can collide with and their properties show 
+    //the possiblity of winning and how much power level they take away
+    player = mario;
+    Boss = new Enemy("Boss", 50, 2, player);
+    Goomba = new Enemy("Goomba", 80, 1, player);
+    Koopa = new Enemy("Koopa", 65, 1, player);
+    Coin = new Collectible("Coin", player);
+    Mushroom = new Collectible("Mushroom", player);
+    gameComplete = false;
 }
 
 Environment::~Environment() {
@@ -31,6 +31,6 @@ void Environment::gameOver(){
     
 }
 
-void Environment::setWarpPipe(){
-    warpPipe = true;
+bool Environment::isGameWon(){
+    return gameComplete;
 }

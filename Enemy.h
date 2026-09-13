@@ -6,14 +6,14 @@
 #include "Mario.h"
 class Enemy{
     private:
-        Mario* mario; //pointer move across classes, only 1 mario
+        Mario* player; //pointer move across classes, only 1 mario
         std::string type;
         int percentWin;
         int numDecrease;
         bool loss;
 
     public:
-        Enemy(std::string type, int percentWin,int numDecrease);
+        Enemy(std::string type, int percentWin,int numDecrease, Mario* mario);
         ~Enemy();
         void fightMario();        
 };
