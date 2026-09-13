@@ -7,7 +7,7 @@ Enemy::Enemy(std::string type, int percentWin,int numDecrease, Mario* mario){
     //enemy instantiates a mario object
 }
 Enemy::~Enemy(){
-
+    delete player;
 }
 void Enemy::fightMario(){
     srand(time(0));

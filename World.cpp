@@ -32,3 +32,7 @@ int World::setLevel(){
         currentLevel+=1;
     }
 }
+
+bool World::isCurrentLevelComplete(){
+    return levels[currentLevel]->isComplete();
+}

@@ -11,6 +11,7 @@ class Vector{
         bool chosen; //randomize, choose spaces. if already chosen, return true, send it to back of the array
 
     public:
+        //constructor / destructor
         Vector();
         ~Vector();
         int getX(); //setting and getting y values for level

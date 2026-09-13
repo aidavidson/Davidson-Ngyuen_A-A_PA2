@@ -48,6 +48,8 @@ class Level {
         // not sure if needed
         //checks if the level should have a warp pipe
         bool hasWarpPipe();
+        //
+        void changeGridPos();
 };
 
 #endif

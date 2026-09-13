@@ -9,9 +9,7 @@ Mario::Mario(int lives){
     
 }
 
-Mario::Mario(){
 
-}
 Mario::~Mario(){
 
 }

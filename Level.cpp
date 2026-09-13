@@ -27,14 +27,6 @@ Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int
     complete = false;
 }
 
-bool Level::isComplete() {
-    return complete;
-}
-
-bool Level::hasWarpPipe() {
-    return warpPipe;
-}
-
 Level::~Level() {
     for (int i = 0; i < n; i++) {
         delete[] grid[i]; //deallocate the outer arrays
@@ -44,6 +36,14 @@ Level::~Level() {
     delete[] openSpots;
     delete[] letters;
     delete[] randomizedLocations;
+}
+
+bool Level::isComplete() {
+    return complete;
+}
+
+bool Level::hasWarpPipe() {
+    return warpPipe;
 }
 
 void Level::randomizeLevel(){
@@ -111,3 +111,4 @@ std::string Level::printLevel(){
 bool Level::isComplete(){
     return complete;
 }
+

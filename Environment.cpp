@@ -19,6 +19,7 @@ Environment::~Environment() {
     delete Koopa;
     delete Coin;
     delete Mushroom;
+    delete player;
 }
 
 void Environment::nextLevel(){

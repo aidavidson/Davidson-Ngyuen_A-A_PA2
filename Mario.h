@@ -19,7 +19,6 @@ class Mario{
     public:
         //constructors/destructors of the mario class
         Mario(int lives);
-        Mario();
         ~Mario();
 
         // modifies the power of mario
