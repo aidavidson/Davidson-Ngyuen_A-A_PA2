@@ -29,7 +29,7 @@ int main(int argc, char*argv[]){
     int randomY = rand() % newProcess->accessVal(dimenInd);
     w.setLevel();
     m.setX(randomX);
-    m.setY(randomY);
+    m.setY(randomY); //these are taken from mario class and implementation
     
 
     return 0;

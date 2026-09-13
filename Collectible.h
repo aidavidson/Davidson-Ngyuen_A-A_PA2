@@ -12,4 +12,4 @@ class Collectible{
         void collectCoin();
         void collectMushroom();
 };
-#endif;
+#endif

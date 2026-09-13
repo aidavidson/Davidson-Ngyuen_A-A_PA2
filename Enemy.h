@@ -6,7 +6,7 @@
 #include "Mario.h"
 class Enemy{
     private:
-        Mario* mario;
+        Mario* mario; //pointer move across classes, only 1 mario
         std::string type;
         int percentWin;
         int numDecrease;

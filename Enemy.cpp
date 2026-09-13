@@ -1,11 +1,10 @@
-
 #include "Enemy.h"
 Enemy::Enemy(std::string type, int percentWin,int numDecrease){
     mario = new Mario();
     this->type = type;
     this->percentWin = percentWin;
     this->numDecrease = numDecrease;
-
+    //enemy instantiates a mario object
 }
 Enemy::~Enemy(){
 

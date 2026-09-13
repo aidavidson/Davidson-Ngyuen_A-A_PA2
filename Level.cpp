@@ -21,12 +21,16 @@ Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int
     for (int i = 0; i < n; i++) {
         grid[i] = new char[n]; //new array for each first index of the array of pointers
     }
-
-    this -> warpPipe = false; //initialize variables
-    this -> complete = false; //initialize variables
-
     randomizeLevel();
     populateGrid();
+}
+
+bool Level::isComplete() {
+    return complete;
+}
+
+bool Level::hasWarpPipe() {
+    return warpPipe;
 }
 
 Level::~Level() {
@@ -41,9 +45,11 @@ Level::~Level() {
 }
 
 void Level::randomizeLevel(){
+    //populateList is a static method from vector class
     randomizedLocations = Vector::populateList(n);
-    int numFound;
+    int numFound; //amount already randomized
     int j = 0;
+    //randomizing for each 1d array in the grid
     for(int i = 0; i< n*n-numFound; i++){
         
         srand(time(0));

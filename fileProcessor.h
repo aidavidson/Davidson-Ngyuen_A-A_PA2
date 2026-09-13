@@ -14,7 +14,7 @@ class fileProcessor{
         ~fileProcessor();
         fileProcessor(std::string input, std::string output);
         int processFile();
-        int accessVal(int index);
+        int accessVal(int index); //for the 
         int outputFile(std::string total);
 };
 

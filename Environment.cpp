@@ -21,9 +21,9 @@ Environment::~Environment() {
     delete Mushroom;
 }
 
-void nextLevel(){
-    if() {
-        
+void Environment::nextLevel(){
+    if(currentLevel != nullptr && currentLevel->isComplete()) {
+        //move on to next level
     }
 }
 

@@ -42,8 +42,9 @@ void Mario::loseLives(){
 int Mario::getEnemiesDefeated(){
     return enemiesDefeated;
 }
+//value is parameter in method
 void Mario::setX(int val){
-    x = val;
+    x = val; 
 }
 void Mario::setY(int val){
     y = val;

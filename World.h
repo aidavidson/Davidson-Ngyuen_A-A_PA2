@@ -11,6 +11,7 @@ class World {
         World(int L, int N, int percentCoin, 
         int percentMushroom, int percentGoombas,
         int percentKoopas, int percentNothing, int currentLevel);
+
         ~World();
         int setLevel();
         int getLevel();

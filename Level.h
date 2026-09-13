@@ -2,7 +2,6 @@
 #define LEVEL_H
 #include "Mario.h"
 #include "vector.h"
-#include "World.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -22,9 +21,12 @@ class Level {
         Level();
         Level(int N,int coins, int mushrooms, int goombas, int koopaTroopas, int nothing, int currentLevel, int numLevels);//these are percentages and the bool, last level for the warp pipes
         ~Level();
+        Level(int N, int percentCoin, int percentMushroom, int percentGoombas, int percentKoopas, int percentNothing);
         void randomizeLevel();
         void populateGrid();
         std::string printLevel();
+        bool isComplete();
+        bool hasWarpPipe();
 };
 
-#endif LEVEL_H
+#endif

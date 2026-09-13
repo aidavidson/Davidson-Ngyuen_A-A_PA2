@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "Collectible.h"
 
+//what happens to mario when he interacts and maybe vice versa
 class Environment {
     private:
         Enemy* Boss;
@@ -11,6 +12,7 @@ class Environment {
         Collectible* Coin;
         Collectible* Mushroom;
         bool warpPipe;
+        Level* currentLevel = nullptr;
 
     public:
         Environment();

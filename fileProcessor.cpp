@@ -1,5 +1,5 @@
 #include "fileProcessor.h"
-#include 
+#include "World.h"
 fileProcessor::fileProcessor(std::string input, std::string output){
     inputTxt = input;
     outputTxt = output;
@@ -15,9 +15,10 @@ int fileProcessor::processFile(){
     std::ifstream inputFile(inputTxt);
     if(inputFile.is_open()){
         int i = 0;
+        //these populate input file 
         while(std::getline(inputFile, val)){
             if(i > 2){
-                arr[i] = arr[1]*arr[1]* arr[i]/100;
+                arr[i] = arr[1]*arr[1]* arr[i]/100; //percent convert to spaces
             }else{
                 arr[i] = stoi(val);
             }
@@ -35,10 +36,13 @@ int fileProcessor::processFile(){
     inputFile.close();
     return 0;
 }
+//get array at that index of array of 
 int fileProcessor::accessVal(int index){
     return arr[index];
 }
 
+
+//printing to file
 int fileProcessor::outputFile(std::string total){
     
 }

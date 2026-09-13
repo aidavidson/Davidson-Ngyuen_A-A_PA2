@@ -5,18 +5,18 @@ class Vector{
         char type;
         int x;
         int y;
-        bool chosen;
+        bool chosen; //randomize, choose spaces. if already chosen, return true, send it to back of the array
 
     public:
         Vector();
         ~Vector();
-        int getX();
-        int getY();
-        bool getChosen();
+        int getX(); //setting and getting y values for level
+        int getY(); //setting and getting x values for level
+        bool getChosen(); //getter here
         char getType();
         void setX(int newX);
         void setY(int newY);
-        void setChosen(bool chosen);
+        void setChosen(bool chosen); //setter here
         void setType(char c);
         static Vector* populateList(int n);
 
