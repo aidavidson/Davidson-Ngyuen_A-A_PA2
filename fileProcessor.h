@@ -1,6 +1,5 @@
 #ifndef FILEPROCESSOR_H
 #define FILEPROCESSOR_H
-#include "Environment.h"
 #include "World.h"
 #include <string>
 #include <fstream>

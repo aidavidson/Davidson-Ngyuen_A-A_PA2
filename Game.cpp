@@ -1,7 +1,6 @@
 #include "Game.h"
 
 
-
 Game::Game(fileProcessor* fp){
     instancefp = fp;
     // starts with -1 for level so when it increments to level 0 
@@ -59,7 +58,7 @@ std::string Game::gameText(){
     txt += ",";
     txt += "). Mario is at power level";
     txt += mario->getPower();
-    txt += "."
+    txt += ".";
 }
 std::string Game::finishGameTxt(){
     std::string txt;

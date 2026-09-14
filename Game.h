@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include "fileProcessor.h"
+#include "Environment.h"
+
 class Game{
     private:
         fileProcessor* instancefp;

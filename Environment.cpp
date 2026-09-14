@@ -2,7 +2,7 @@
 #include "Level.h"
 
 Environment::Environment(){
-
+    
 }
 
 Environment::Environment(Mario* mario, int L) {
@@ -109,6 +109,6 @@ Enemy* Environment::accessEnemy(std::string typeEnemy){
         return Koopa;
     }else{
         Enemy* emptyEnemy = new Enemy("empty", 0,0, player);
-        return emptyEnemy
+        return emptyEnemy;
     }
 }
