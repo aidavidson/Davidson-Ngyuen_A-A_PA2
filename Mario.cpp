@@ -71,5 +71,7 @@ void Mario::gainLives(){
 void Mario::collectCoin(){
     coins += 1;
 }
-
+int Mario::getCoins(){
+    return coins;
+}
 
