@@ -16,15 +16,16 @@ class Mario{
         int powerLevel;
         // the different power level possibilities
         int powerLevels[3] = {0, 1, 2};
+        bool beatEnemy;
     public:
         //constructors/destructors of the mario class
         Mario(int lives);
         ~Mario();
-
+        
         // modifies the power of mario
         void increasePower(int currentPower);
         void decreasePower(int currentPower,int amount);
-
+        void setBeatEnemy(bool tf);
         // allows you to set the amount of defeated enemies
         void increaseDefeatedEnemies();
         void resetEnemiesDefeated();
@@ -42,6 +43,8 @@ class Mario{
         // setting position values for mario
         void setX(int val);
         void setY(int val);
+        int getX();
+        int getY();
 
         void collectCoin();
     };

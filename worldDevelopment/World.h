@@ -11,11 +11,12 @@ class World {
         World(int L, int N, int percentCoin, 
         int percentMushroom, int percentGoombas,
         int percentKoopas, int percentNothing, int currentLevel);
-
+        World();
         ~World();
         int setLevel();
         int getLevel();
-
+        char** getLevelgrid(int currentLevel);
+        void setLevelGridElement(char c, int x , int y);  
         bool isCurrentLevelComplete();
 
 };

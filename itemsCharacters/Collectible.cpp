@@ -16,3 +16,7 @@ void Collectible::collectMushroom(){
     //increases power based on marios current power
     player->increasePower(player->getPower());
 }
+
+std::string Collectible::getName(){
+    return type;
+}

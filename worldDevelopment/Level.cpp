@@ -112,3 +112,10 @@ bool Level::isComplete(){
     return complete;
 }
 
+void Level::changeGridChar(char letter, int x, int y){
+    grid[x][y] = letter;
+}
+
+char** Level::returnGrid(){
+    return grid;
+}

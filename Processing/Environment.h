@@ -15,9 +15,12 @@ class Environment {
         Collectible* Mushroom;
         bool gameComplete;
         Level* currentLevel = nullptr;
+        int worldLength;
 
     public:
-        Environment(Mario* mario);
+
+        Environment();
+        Environment(Mario* mario, int worldLength);
         ~Environment();
         // if mario hits a warp pipe he moves to next level
         void nextLevel();
@@ -27,5 +30,9 @@ class Environment {
         void marioMove();
         //checks if mario won already
         bool isGameWon();
+        void fightMario(Enemy* enemy);
+        void marioCollect(Collectible* collectible, std::string which);
+        Enemy* accessEnemy(std::string typeEnemy);
+        Collectible* accessCollectible(std::string typeCollectible);
 
 };

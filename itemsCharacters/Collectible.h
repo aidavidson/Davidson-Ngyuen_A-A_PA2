@@ -13,6 +13,7 @@ class Collectible{
         Collectible(std::string type, Mario* mario);
         ~Collectible();
         // increases marios coins
+        std::string getName();
         void collectCoin();
         // increases marios Power
         void collectMushroom();

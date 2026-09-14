@@ -1,6 +1,8 @@
 #include "World.h"
 #include "Level.h"
+World::World(){
 
+}
 //constructor
 World::World(int L, int N, int percentCoin,
      int percentMushroom, int percentGoombas,
@@ -25,6 +27,13 @@ int World::getLevel(){
     return currentLevel;
 }
 
+char** World::getLevelgrid(int currentLevel){
+    return levels[currentLevel]->returnGrid();
+}
+void World::setLevelGridElement(char c, int x , int y){
+    return levels[currentLevel]->changeGridChar(c,x,y);
+}
+
 int World::setLevel(){
     if(L <= currentLevel){
         return -1;
@@ -36,3 +45,4 @@ int World::setLevel(){
 bool World::isCurrentLevelComplete(){
     return levels[currentLevel]->isComplete();
 }
+

@@ -6,7 +6,7 @@ Mario::Mario(int lives){
     V = lives;
     coins = 0;
     powerLevel = 0;
-    
+    beatEnemy = false;
 }
 
 
@@ -29,6 +29,9 @@ void Mario::decreasePower(int currentPower, int amount){
         }
     }
 }
+void Mario::setBeatEnemy(bool tf){
+    beatEnemy = tf;
+}
 void Mario::increaseDefeatedEnemies(){
     enemiesDefeated += 1;
 }
@@ -47,6 +50,14 @@ void Mario::setX(int val){
 void Mario::setY(int val){
     y = val;
 }
+int Mario::getX(){
+    return x;
+}
+
+int Mario::getY(){
+    return y;
+}
+
 int Mario::getLives(){
     return V;
 }

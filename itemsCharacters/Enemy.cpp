@@ -13,7 +13,7 @@ void Enemy::fightMario(){
     srand(time(0));
     int randomNumber = rand() % 100;
     if(randomNumber <= percentWin){
-
+        
     }else{
         if(player->getPower() > numDecrease){
             player->decreasePower(player->getPower(), numDecrease);

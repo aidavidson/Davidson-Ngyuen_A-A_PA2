@@ -48,8 +48,10 @@ class Level {
         // not sure if needed
         //checks if the level should have a warp pipe
         bool hasWarpPipe();
-        //
-        void changeGridPos();
+        // ensure when mario collects/ fights the object dissappears in the level
+        void changeGridChar(char letter, int x , int y);
+
+        char** returnGrid();
 };
 
 #endif

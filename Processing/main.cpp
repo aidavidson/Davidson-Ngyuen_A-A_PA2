@@ -1,22 +1,22 @@
-#include "Enemy.h"
 #include "fileProcessor.h"
 #include "World.h"
-const int levelInd = 0;
-const int dimenInd = 1;
-const int numLiveInd = 2;
-const int perCoinInd = 3;
-const int perNothInd = 4;
-const int perGoomInd = 5;
-const int perKoopInd = 6;
-const int perMushInd = 7;
-const int gameStart = -1;
+#include "Game.h"
+
 
 int main(int argc, char*argv[]){
     //creates a file processor object to use the text files to implement the game
     fileProcessor* newProcess = new fileProcessor(argv[1], argv[2]);
-
+    Game develop = Game(newProcess);
     // ***** Possible Game Class *****
-    // checks if
+    
+    
+    //************************** */
+    return 0;
+
+}
+
+/*
+
     int error = 0;
     error = newProcess->processFile();
     if(error == 1){
@@ -48,8 +48,4 @@ int main(int argc, char*argv[]){
             marioImpacts.marioMove();
         }
     }
-    
-    //************************** */
-    return 0;
-
-}
+*/
