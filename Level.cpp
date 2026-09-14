@@ -99,6 +99,7 @@ void Level::populateGrid(){
 
 std::string Level::printLevel(){
     std::string print;
+    print += "==========\n";
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             print += grid[i][j];
@@ -106,7 +107,7 @@ std::string Level::printLevel(){
         }
         print += "\n";
     }
-    print += "==========";
+    print += "==========\n";
 }
 bool Level::isComplete(){
     return complete;

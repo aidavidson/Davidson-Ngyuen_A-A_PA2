@@ -18,10 +18,15 @@ class Game{
         const int perKoopInd = 6;
         const int perMushInd = 7;
         const int gameStart = -1;
+        bool wonBattle;
     public:
         Game(fileProcessor* fp);
         int initializeGame();
         void repeatedAction();
+        std::string marioPosText();
+        std::string gameText();
+        std::string finishGameTxt();
+
 };
 
 #endif

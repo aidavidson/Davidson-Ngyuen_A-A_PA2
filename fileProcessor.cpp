@@ -4,6 +4,7 @@ fileProcessor::fileProcessor(std::string input, std::string output){
     inputTxt = input;
     outputTxt = output;
     arr = new int[8];
+    fullOutputBlock = "";
 }
 
 fileProcessor::~fileProcessor(){
@@ -43,6 +44,10 @@ int fileProcessor::accessVal(int index){
 
 
 //printing to file
-int fileProcessor::outputFile(std::string total){
-    
+int fileProcessor::outputFile(){
+    std::ifstream outputFile(outputTxt);
+}
+
+void fileProcessor::addToOutput(std::string txt){
+    fullOutputBlock += txt;
 }

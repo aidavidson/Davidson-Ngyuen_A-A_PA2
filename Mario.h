@@ -47,6 +47,7 @@ class Mario{
         int getY();
 
         void collectCoin();
+        int getCoins();
     };
 
 #endif

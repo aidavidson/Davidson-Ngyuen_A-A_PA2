@@ -36,7 +36,7 @@ void Environment::nextLevel(){
 void Environment::gameOver(){
     
 }
-void Environment::marioMove(){
+std::string Environment::marioMove(fileProcessor* fp){
     srand(time(0));
     int randomVal = rand() % 4;
     switch(randomVal){
@@ -47,14 +47,15 @@ void Environment::marioMove(){
             else{
                 player->setX(player->getX()-1);
             }
+            return "Mario will move LEFT";
             break;
         case 1:
             if(player->getX() == (worldLength-1)){
                 player->setX(0);
-                ;
             }else{
                 player->setX(player->getX()+1);
             }
+            return "Mario will move RIGHT";
             break;
         case 2:
             if(player->getY() == 0){
@@ -63,6 +64,7 @@ void Environment::marioMove(){
             else{
                 player->setY(player->getY()-1);
             }
+            return "Mario will move UP";
             break;
         case 3:
             if(player->getY() == (worldLength-1)){
@@ -71,6 +73,7 @@ void Environment::marioMove(){
             }else{
                 player->setY(player->getY()+1);
             }
+            return "Mario will move DOWN";
             break;
     }
 }
@@ -79,8 +82,8 @@ bool Environment::isGameWon(){
     return gameComplete;
 }
 
-void Environment::fightMario(Enemy* enemy){
-    enemy->fightMario();
+bool Environment::fightMario(Enemy* enemy){
+    return enemy->fightMario();
 }
 void marioCollect(Collectible* collectible, std::string which){
     if(which == "Coin"){

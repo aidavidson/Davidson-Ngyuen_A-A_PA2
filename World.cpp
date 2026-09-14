@@ -46,3 +46,6 @@ bool World::isCurrentLevelComplete(){
     return levels[currentLevel]->isComplete();
 }
 
+std::string World::levelPrint(int currentLevel){
+    levels[currentLevel]->printLevel();
+}

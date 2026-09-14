@@ -18,6 +18,7 @@ class World {
         char** getLevelgrid(int currentLevel);
         void setLevelGridElement(char c, int x , int y);  
         bool isCurrentLevelComplete();
+        std::string levelPrint(int currentLevel);
 
 };
 

@@ -15,7 +15,7 @@ class Enemy{
     public:
         Enemy(std::string type, int percentWin,int numDecrease, Mario* mario);
         ~Enemy();
-        void fightMario();        
+        bool fightMario();        
 };
 
 #endif

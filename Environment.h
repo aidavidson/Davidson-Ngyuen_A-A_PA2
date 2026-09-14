@@ -2,7 +2,7 @@
 #include "Mario.h"
 #include "Enemy.h"
 #include "Collectible.h"
-
+#include "fileProcessor.h"
 
 //what happens to mario when he interacts and maybe vice versa
 class Environment {
@@ -27,10 +27,10 @@ class Environment {
         // if mario hits an enemy is P0 and has 1 life he dies and loses
         void gameOver();
         //25 percent chance for each direction
-        void marioMove();
+        std::string marioMove(fileProcessor* fp);
         //checks if mario won already
         bool isGameWon();
-        void fightMario(Enemy* enemy);
+        bool fightMario(Enemy* enemy);
         void marioCollect(Collectible* collectible, std::string which);
         Enemy* accessEnemy(std::string typeEnemy);
         Collectible* accessCollectible(std::string typeCollectible);
