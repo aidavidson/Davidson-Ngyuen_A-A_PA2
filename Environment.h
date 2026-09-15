@@ -30,6 +30,7 @@ class Environment {
         std::string marioMove(fileProcessor* fp);
         //checks if mario won already
         bool isGameWon();
+        void markGameWon();
         bool fightMario(Enemy* enemy);
         void marioCollect(Collectible* collectible, std::string which);
         Enemy* accessEnemy(std::string typeEnemy);

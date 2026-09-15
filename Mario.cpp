@@ -23,11 +23,18 @@ void Mario::increasePower(int currentPower){
 }
 
 void Mario::decreasePower(int currentPower, int amount){
-    for(int i = 3; i > 0; i--){
-        if(powerLevels[i] == powerLevel && powerLevel != 0){
-            powerLevel = powerLevels[i-amount];
-        }
+    //why do we need a for loop here?
+    // for(int i = 2; i >= 0; i--){
+    //     if(powerLevels[i] == powerLevel && powerLevel != 0){
+    //         powerLevel = powerLevels[i-amount];
+    //     }
+    // }
+
+    powerLevel -= amount;
+    if (powerLevel < 0) {
+        powerLevel = 0;
     }
+
 }
 void Mario::setBeatEnemy(bool tf){
     beatEnemy = tf;

@@ -36,7 +36,7 @@ Vector* Vector::populateList(int n){
     Vector* arr = new Vector[n*n];
     
     //preserves the index of the 1d array which is being populated
-    int index;
+    int index = 0;
     
     //a for loop which allows the method to set row index and column index properly
     for(int i = 0; i < n; i++){

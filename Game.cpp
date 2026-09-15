@@ -1,39 +1,19 @@
 #include "Game.h"
 
-
-
-Game::~Game(){
-    delete instancefp;
-    delete mario;
-    delete world;
-    delete marioImpacts;
-}
-
-int Game::initializeGame(){
-    //checks if instancefp works properly
-    error = instancefp->processFile();
-    //if not it returns and cuts out before anthing happens
-    if(error == 1){
-        std::cout << "the input values for the input file are wrong" << std::endl;
-        return 1;
-    }
-    //finds random indexes for mario in a new level --> should be in a class idk where for now
-    int randomX = rand() % instancefp->accessVal(dimenInd);
-    int randomY = rand() % instancefp->accessVal(dimenInd);
-    //sets the current level from -1 -> 0
-    world->setLevel();
-    //sets marios position in the level
-    mario->setX(randomX);
-    mario->setY(randomY); 
-
-}
-
 Game::Game(fileProcessor* fp){
     instancefp = fp;
     // starts with -1 for level so when it increments to level 0 
     //in world it doesn't skip a level
+
+    error = instancefp->processFile();
+    //if not it returns and cuts out before anthing happens
+    //try-catch statements to open files
+    error = instancefp->processFile();
+    if (error != 0) {
+        throw std::runtime_error("Input file error");
+    }
+
     int currentLevel = -1;
-    initializeGame();
     //creates a world object which populates with all the level data
     world = new World(fp->accessVal(levelInd), fp->accessVal(dimenInd), 
           fp->accessVal(perCoinInd),fp->accessVal(perMushInd),
@@ -44,8 +24,27 @@ Game::Game(fileProcessor* fp){
     //checks to see if file operations works properly
     error = 0;
     marioImpacts =new Environment(mario, fp->accessVal(dimenInd));
+    initializeGame();
     wonBattle = false;
-    
+}
+
+Game::~Game(){
+    delete mario;
+    delete world;
+    delete marioImpacts;
+}
+
+int Game::initializeGame(){
+    //checks if instancefp works properly
+    //finds random indexes for mario in a new level --> should be in a class idk where for now
+    int randomX = rand() % instancefp->accessVal(dimenInd);
+    int randomY = rand() % instancefp->accessVal(dimenInd);
+    //sets the current level from -1 -> 0
+    world->setLevel();
+    //sets marios position in the level
+    mario->setX(randomX);
+    mario->setY(randomY); 
+    return 0;
 }
 
 std::string Game::marioPosText(){
@@ -69,6 +68,7 @@ std::string Game::gameText(){
     txt += "). Mario is at power level";
     txt += std::to_string(mario->getPower());
     txt += ".";
+    return txt;
 }
 
 std::string Game::finishGameTxt(){
@@ -78,14 +78,15 @@ std::string Game::finishGameTxt(){
     txt += " lives left. Mario has ";
     txt += std::to_string(mario->getCoins());
     txt += " coins.";
+    return txt;
 }
 
 void Game::repeatedAction(){
     std::string direction;
     int increments = 0;
-    while(mario->getLives() != 0 && marioImpacts->isGameWon() == false){
-        if(world->isCurrentLevelComplete() == true){
-            instancefp->addToOutput(world->levelPrint(world->getLevel()));
+    while(mario->getLives() != 0 && marioImpacts->isGameWon() == false){ 
+        if (!world->isCurrentLevelComplete()) { //if the current level in the world isn't complete
+            instancefp->addToOutput(world->levelPrint(world->getLevel())); //add to the fileprocessor pointer
             
             world->setLevelGridElement('x', mario->getX(), mario->getY());
             if(increments == 0){
@@ -140,6 +141,7 @@ void Game::repeatedAction(){
                     instancefp->addToOutput("Mario encountered a boss ");
                     if(wonBattle == true){
                         instancefp->addToOutput("and won.");
+                        world->setLevel();
                     }else{
                         instancefp->addToOutput("and loss.");
                     }
@@ -154,12 +156,11 @@ void Game::repeatedAction(){
                 default:
                     break;
             }
-            size_t length = sizeof(currentLevelGrid) / sizeof(currentLevelGrid[0]);
+            // size_t length = sizeof(currentLevelGrid) / sizeof(currentLevelGrid[0]);
 
-            for(int i = 0; i < length; i++){
-                delete[] currentLevelGrid[i];
-            }
-            delete[] currentLevelGrid;
+            // for(int i = 0; i < length; i++){
+            //     delete[] currentLevelGrid[i];
+            // }
             //delete [] currentLevelGrid;
         }
     }

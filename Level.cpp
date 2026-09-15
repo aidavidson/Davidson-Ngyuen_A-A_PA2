@@ -12,7 +12,7 @@ Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int
     letters[1] = 'm';
     letters[2] = 'g';
     letters[3] = 'k';
-    letters[4] = 'n';
+    letters[4] = 'x';
     
     n = N; //level size
     grid = new char*[n]; //Array of char pointers
@@ -38,46 +38,72 @@ Level::~Level() {
     delete[] randomizedLocations;
 }
 
+bool Level::isComplete() {
+    return complete;
+}
 
 bool Level::hasWarpPipe() {
     return warpPipe;
 }
 
-void Level::randomizeLevel(){
-    //populateList is a static method from vector class
+void Level::randomizeLevel() {
     randomizedLocations = Vector::populateList(n);
-    int numFound; //amount already randomized
     int j = 0;
-    //randomizing for each 1d array in the grid
-    for(int i = 0; i< n*n-numFound; i++){
-        
-        srand(time(0));
-        int randInd = rand() % (n*n-numFound);
 
-        if(randomizedLocations[randInd].getChosen() == false){
+    for (int i = 0; i < n * n; i++) {
+        int remaining = n * n - i;
+        int randInd = rand() % remaining;
 
-            randomizedLocations[randInd].setChosen(true);
-
-            Vector temp;
-
-            if(openSpots[j] != 0){
-                randomizedLocations[randInd].setType(letters[j]);
-            }else{
-                j++;
-            }
-            temp = randomizedLocations[randInd];
-
-            randomizedLocations[randInd] = randomizedLocations[n*n-1];
-
-            randomizedLocations[n*n-1] = temp;
-
-            numFound++;
-            
+        while (j < 5 && openSpots[j] <= 0) {
+            j++;
         }
-    }   
+
+        char tile = 'x'; // Empty if all counts are exhausted.
+
+        if (j < 5) {
+            tile = letters[j];
+            openSpots[j]--;
+        }
+
+        randomizedLocations[randInd].setType(tile);
+        randomizedLocations[randInd].setChosen(true);
+
+        Vector temp = randomizedLocations[randInd];
+        randomizedLocations[randInd] =
+            randomizedLocations[remaining - 1];
+        randomizedLocations[remaining - 1] = temp;
+    }
 }
+
+// void Level::randomizeLevel(){
+//     //populateList is a static method from vector class
+//     randomizedLocations = Vector::populateList(n);
+//     int numFound = 0; //amount already randomized
+//     int j = 0;
+//     //randomizing for each 1d array in the grid
+//     for(int i = 0; i< n*n; i++){
+//         int remaining = n * n - i;
+        
+//         int randInd = rand() % remaining;
+
+//         if(randomizedLocations[randInd].getChosen() == false){
+//             randomizedLocations[randInd].setChosen(true);
+//             Vector temp;
+//             if(openSpots[j] != 0){
+//                 randomizedLocations[randInd].setType(letters[j]);
+//             }else{
+//                 j++;
+//             }
+//             temp = randomizedLocations[randInd];
+//             randomizedLocations[randInd] = randomizedLocations[n*n-1];
+//             randomizedLocations[n*n-1] = temp;
+//             numFound++;
+            
+//         }
+//     }   
+// }
 void Level::populateGrid(){
-    for(int i = 0; i < n*n-1; i++){
+    for(int i = 0; i < n*n; i++){
         grid[randomizedLocations[i].getX()][randomizedLocations[i].getY()] = randomizedLocations[i].getType();
     }
     if(currentLevel != (numLevels-1)){
@@ -105,7 +131,9 @@ std::string Level::printLevel(){
         print += "\n";
     }
     print += "==========\n";
+    return print;
 }
+
 
 void Level::changeGridChar(char letter, int x, int y){
     grid[x][y] = letter;

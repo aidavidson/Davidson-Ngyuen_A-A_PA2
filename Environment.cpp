@@ -26,17 +26,17 @@ Environment::~Environment() {
     delete Mushroom;
 }
 
-void Environment::nextLevel(){
-    if(currentLevel != nullptr && currentLevel->isComplete()) {
-        //move on to next level
-    }
-}
+// void Environment::nextLevel(){
+//     if(currentLevel->isComplete()) {
+//         //move on to next level
+//     }
+// }
 
 void Environment::gameOver(){
     
 }
+
 std::string Environment::marioMove(fileProcessor* fp){
-    srand(time(0));
     int randomVal = rand() % 4;
     switch(randomVal){
         case 0:
@@ -79,6 +79,10 @@ std::string Environment::marioMove(fileProcessor* fp){
 
 bool Environment::isGameWon(){
     return gameComplete;
+}
+
+void Environment::markGameWon() {
+    gameComplete = true;
 }
 
 bool Environment::fightMario(Enemy* enemy){

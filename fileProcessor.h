@@ -12,6 +12,7 @@ class fileProcessor{
         std::string outputTxt;
         std::string fullOutputBlock;
         int* arr;
+        std::ofstream outputStream;
     public:
         ~fileProcessor();
         fileProcessor(std::string input, std::string output);

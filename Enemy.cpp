@@ -10,7 +10,6 @@ Enemy::~Enemy(){
     
 }
 bool Enemy::fightMario(){
-    srand(time(0));
     int randomNumber = rand() % 100;
     if(randomNumber <= percentWin){
         return true;
