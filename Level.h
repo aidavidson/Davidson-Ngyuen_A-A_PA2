@@ -35,7 +35,7 @@ class Level {
         Level(int N,int coins, int mushrooms, int goombas, int koopaTroopas, int nothing, int currentLevel, int numLevels);//these are percentages and the bool, last level for the warp pipes
         ~Level();
         //not sure if needed
-        Level(int N, int percentCoin, int percentMushroom, int percentGoombas, int percentKoopas, int percentNothing);
+        //Level(int N, int percentCoin, int percentMushroom, int percentGoombas, int percentKoopas, int percentNothing);
         //randomizes the positions of each of the objects
         void randomizeLevel();
         //populates the grid with the objects

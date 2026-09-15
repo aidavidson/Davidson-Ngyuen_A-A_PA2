@@ -9,7 +9,7 @@ World::World(int L, int N, int percentCoin,
      int percentKoopas, int percentNothing, int currentLevel) {
     this -> L = L;
     for (int i = 0; i < L; i++) { //new array of pointers to level objects
-        Level* newLevel = new Level(N, percentCoin, percentMushroom, percentGoombas, percentKoopas, percentNothing);
+        Level* newLevel = new Level(N, percentCoin, percentMushroom, percentGoombas, percentKoopas, percentNothing,i, L);
         levels[i] = newLevel;
     }
     currentLevel = -1;

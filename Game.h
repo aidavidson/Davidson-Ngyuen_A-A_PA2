@@ -7,9 +7,8 @@ class Game{
     private:
         fileProcessor* instancefp;
         Mario* mario;
-        World world;
-        Vector marioPos;
-        Environment marioImpacts;
+        World* world;
+        Environment* marioImpacts;
         int error;
         const int levelInd = 0;
         const int dimenInd = 1;
@@ -23,6 +22,7 @@ class Game{
         bool wonBattle;
     public:
         Game(fileProcessor* fp);
+        ~Game();
         int initializeGame();
         void repeatedAction();
         std::string marioPosText();

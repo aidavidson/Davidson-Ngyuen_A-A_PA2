@@ -38,9 +38,6 @@ Level::~Level() {
     delete[] randomizedLocations;
 }
 
-bool Level::isComplete() {
-    return complete;
-}
 
 bool Level::hasWarpPipe() {
     return warpPipe;

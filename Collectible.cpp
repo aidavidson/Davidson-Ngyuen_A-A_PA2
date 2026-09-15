@@ -5,7 +5,7 @@ Collectible::Collectible(std::string type, Mario* mario){
     this->type = type;
 }
 Collectible::~Collectible(){
-    delete player;
+    
 }
 void Collectible::collectCoin(){
     // just collects coin in mario class

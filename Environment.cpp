@@ -24,7 +24,6 @@ Environment::~Environment() {
     delete Koopa;
     delete Coin;
     delete Mushroom;
-    delete player;
 }
 
 void Environment::nextLevel(){
@@ -85,7 +84,7 @@ bool Environment::isGameWon(){
 bool Environment::fightMario(Enemy* enemy){
     return enemy->fightMario();
 }
-void marioCollect(Collectible* collectible, std::string which){
+void Environment::marioCollect(Collectible* collectible, std::string which){
     if(which == "Coin"){
         collectible->collectCoin();
     }else if(which == "Mushroom"){
@@ -107,8 +106,5 @@ Enemy* Environment::accessEnemy(std::string typeEnemy){
         return Goomba;
     }else if(typeEnemy == "Koopa"){
         return Koopa;
-    }else{
-        Enemy* emptyEnemy = new Enemy("empty", 0,0, player);
-        return emptyEnemy;
     }
 }

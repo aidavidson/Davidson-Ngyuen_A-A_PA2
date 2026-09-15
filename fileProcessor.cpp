@@ -18,12 +18,11 @@ int fileProcessor::processFile(){
         int i = 0;
         //these populate input file 
         while(std::getline(inputFile, val)){
-            if(i > 2){
-                arr[i] = arr[1]*arr[1]* arr[i]/100; //percent convert to spaces
-            }else{
-                arr[i] = stoi(val);
-            }
+            arr[i] = stoi(val);
             i++;
+        }
+        for(int j = 3; j < 8; j++){
+            arr[j] = arr[1]*arr[1] * (arr[j]/100);
         }
     }
     int total = 0;
