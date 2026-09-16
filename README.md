@@ -1,10 +1,12 @@
 Full name: 
-    -Aiden Davidson
+    -Andy Nguyen
 Partner: 
-    -Andy Ngyuen
+    -Aiden Davidson
 Student ID: 
+    -2493321
     -2487689
 Chapman email: 
+    annguyen@chapman.edu
     -aidavidson@chapman.edu
 Course number and section: 
     -CPSC 350-01

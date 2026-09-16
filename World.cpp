@@ -1,8 +1,6 @@
 #include "World.h"
 #include "Level.h"
-World::World(){
 
-}
 //constructor
 World::World(int L, int N, int percentCoin,
     int percentMushroom, int percentGoombas,
