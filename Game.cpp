@@ -49,7 +49,7 @@ int Game::initializeGame(){
 
 std::string Game::marioPosText(){
     std::string txt;
-    txt += "\nMario is starting in position: (";
+    txt += "Mario is starting in position: (";
     txt += std::to_string(mario->getX());
     txt += "," ;
     txt += std::to_string(mario->getY());
@@ -65,7 +65,8 @@ std::string Game::gameText(){
     txt += " Mario is at position: (";
     txt += std::to_string(mario->getX());
     txt += ",";
-    txt += "). Mario is at power level";
+    txt += std::to_string(mario->getY());
+    txt += "). Mario is at power level ";
     txt += std::to_string(mario->getPower());
     txt += ".";
     return txt;
@@ -80,90 +81,201 @@ std::string Game::finishGameTxt(){
     txt += " coins.";
     return txt;
 }
+//local function declarations for repeated action
+
 
 void Game::repeatedAction(){
     std::string direction;
     int increments = 0;
+    
+    
     while(mario->getLives() != 0 && marioImpacts->isGameWon() == false){ 
-        if (!world->isCurrentLevelComplete()) { //if the current level in the world isn't complete
-            instancefp->addToOutput(world->levelPrint(world->getLevel())); //add to the fileprocessor pointer
-            
-            world->setLevelGridElement('x', mario->getX(), mario->getY());
-            if(increments == 0){
-                instancefp->addToOutput(marioPosText());
-                instancefp->addToOutput(world->levelPrint(world->getLevel()));
-                
-            }
-            instancefp->addToOutput(gameText());
-            direction = marioImpacts->marioMove(instancefp);
-            char** currentLevelGrid = world->getLevelgrid(world->getLevel());
-            switch(currentLevelGrid[mario->getX()][mario->getY()]){
-                case 'x':
-                    //nothing
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    instancefp->addToOutput("Mario visited an empty space. ");
-                    break;
-                case 'm':
-                    marioImpacts->marioCollect(marioImpacts->accessCollectible("Mushroom"), marioImpacts->accessCollectible("Mushroom")->getName());
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    if(mario->getPower() < 2){
-                        instancefp->addToOutput("Mario collected a mushroom. ");
-                    }
-                    break;
-                case 'c':
-                    marioImpacts->marioCollect(marioImpacts->accessCollectible("Coin"), marioImpacts->accessCollectible("Coin")->getName());
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    instancefp->addToOutput("Mario collected a coin. ");
-                    break;
-                case 'g':
-                    wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Goomba"));
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    instancefp->addToOutput("Mario encountered a goomba "); 
-                    if(wonBattle == true){
-                        instancefp->addToOutput("and won.");
-                    }else{
-                        instancefp->addToOutput("and loss.");
-                    }                   
-                    break;
-                case 'k':
-                    wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Koopa"));
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    instancefp->addToOutput("Mario encountered a koopa ");
-                    if(wonBattle == true){
-                        instancefp->addToOutput("and won.");
-                    }else{
-                        instancefp->addToOutput("and loss.");
-                    }
-                    break;
-                case 'b':
-                    wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Boss"));
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    instancefp->addToOutput("Mario encountered a boss ");
-                    if(wonBattle == true){
-                        instancefp->addToOutput("and won.");
-                        world->setLevel();
-                    }else{
-                        instancefp->addToOutput("and loss.");
-                    }
-                    
 
-                    break;
-                case 'w':
-                    world->setLevelGridElement('H', mario->getX(), mario->getY());
-                    world->setLevel();
-                    instancefp->addToOutput("Mario encountered a warp pipe. ");
-                    break;
-                default:
-                    break;
-            }
-            // size_t length = sizeof(currentLevelGrid) / sizeof(currentLevelGrid[0]);
-
-            // for(int i = 0; i < length; i++){
-            //     delete[] currentLevelGrid[i];
-            // }
-            //delete [] currentLevelGrid;
+        instancefp->addToOutput(world->levelPrint(world->getLevel())); //add to the fileprocessor pointer
+        if(increments == 0){
+            instancefp->addToOutput(marioPosText());
+            world->setLevelGridElement('H', mario->getX(), mario->getY());
+            instancefp->addToOutput(world->levelPrint(world->getLevel()));
         }
+        //if (world->isCurrentLevelComplete() == 0) { //if the current level in the world isn't complete
+        // sets marios first position as an H
+        
+        //ensures game initializatio is only called once
+        char** currentLevelGrid = world->getLevelgrid(world->getLevel());
+        switch(currentLevelGrid[mario->getX()][mario->getY()]){
+            case 'x':
+                nothingAction();
+                break;
+            case 'm':
+                mushroomAction();
+                break;
+            case 'c':
+                coinAction();
+                break;
+            case 'g':
+                goombaAction();
+                break;
+            case 'k':
+                koopaAction();
+                break;
+            case 'b':
+                bossAction();
+                break;
+            case 'w':
+                warpAction();
+                break;
+            default:
+                break;
+
+        }
+            
+        //sets marios past position to an x 
+        world->setLevelGridElement('x', mario->getX(), mario->getY());
+        direction = marioImpacts->marioMove(instancefp);
+        
+        world->setLevelGridElement('H', mario->getX(), mario->getY());
+        instancefp->addToOutput(gameText());
+        
+        break;
+    increments++;
     }
     instancefp->addToOutput(finishGameTxt());
     instancefp->addToOutput(direction);
 }
+
+void Game::nothingAction(){
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    instancefp->addToOutput("Mario visited an empty space. ");
+    
+}
+void Game::mushroomAction(){
+    marioImpacts->marioCollect(marioImpacts->accessCollectible("Mushroom"), marioImpacts->accessCollectible("Mushroom")->getName());
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    if(mario->getPower() < 2){
+        instancefp->addToOutput("Mario collected a mushroom.");
+    }
+}
+void Game::coinAction(){
+    marioImpacts->marioCollect(marioImpacts->accessCollectible("Coin"), marioImpacts->accessCollectible("Coin")->getName());
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    instancefp->addToOutput("Mario collected a coin. ");
+}
+void Game::goombaAction(){
+    marioImpacts->marioCollect(marioImpacts->accessCollectible("Coin"), marioImpacts->accessCollectible("Coin")->getName());
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    instancefp->addToOutput("Mario collected a coin. ");
+}
+void Game::koopaAction(){
+    wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Goomba"));
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    instancefp->addToOutput("Mario encountered a goomba "); 
+    if(wonBattle == true){
+        instancefp->addToOutput("and won.");
+        mario->increaseDefeatedEnemies();
+    }else{
+        instancefp->addToOutput("and loss.");
+    }                   
+}
+
+void Game::bossAction(){
+    wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Boss"));
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    instancefp->addToOutput("Mario encountered a boss ");
+    if(wonBattle == true){
+        instancefp->addToOutput("and won.");
+        mario->increaseDefeatedEnemies();
+        world->setLevel();
+    }else{
+        instancefp->addToOutput("and loss.");
+    }
+}
+
+void Game::warpAction(){
+    world->setLevelGridElement('H', mario->getX(), mario->getY());
+    world->setLevel();
+    instancefp->addToOutput("Mario encountered a warp pipe. ");
+
+}
+
+
+
+
+/*
+
+
+        
+        direction = marioImpacts->marioMove(instancefp);
+        
+        switch(currentLevelGrid[mario->getX()][mario->getY()]){
+            case 'x':
+                //nothing
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                instancefp->addToOutput("Mario visited an empty space. ");
+                break;
+            case 'm':
+                marioImpacts->marioCollect(marioImpacts->accessCollectible("Mushroom"), marioImpacts->accessCollectible("Mushroom")->getName());
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                if(mario->getPower() < 2){
+                    instancefp->addToOutput("Mario collected a mushroom. ");
+                }
+                break;
+            case 'c':
+                marioImpacts->marioCollect(marioImpacts->accessCollectible("Coin"), marioImpacts->accessCollectible("Coin")->getName());
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                instancefp->addToOutput("Mario collected a coin. ");
+                break;
+            case 'g':
+                wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Goomba"));
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                instancefp->addToOutput("Mario encountered a goomba "); 
+                if(wonBattle == true){
+                    instancefp->addToOutput("and won.");
+                    mario->increaseDefeatedEnemies();
+                }else{
+                    instancefp->addToOutput("and loss.");
+                }                   
+                break;
+            case 'k':
+                wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Koopa"));
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                instancefp->addToOutput("Mario encountered a koopa ");
+                if(wonBattle == true){
+                    instancefp->addToOutput("and won.");
+                    mario->increaseDefeatedEnemies();
+                }else{
+                    instancefp->addToOutput("and loss.");
+                }
+                break;
+            case 'b':
+                wonBattle = marioImpacts->fightMario(marioImpacts->accessEnemy("Boss"));
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                instancefp->addToOutput("Mario encountered a boss ");
+                if(wonBattle == true){
+                    instancefp->addToOutput("and won.");
+                    mario->increaseDefeatedEnemies();
+                    world->setLevel();
+                }else{
+                    instancefp->addToOutput("and loss.");
+                }
+                
+
+                break;
+            case 'w':
+                world->setLevelGridElement('H', mario->getX(), mario->getY());
+                world->setLevel();
+                instancefp->addToOutput("Mario encountered a warp pipe. ");
+                break;
+            default:
+                break;
+        }
+        // size_t length = sizeof(currentLevelGrid) / sizeof(currentLevelGrid[0]);
+
+        // for(int i = 0; i < length; i++){
+        //     delete[] currentLevelGrid[i];
+        // }
+        //delete [] currentLevelGrid;
+    //}
+        increments++;
+    }
+    
+*/

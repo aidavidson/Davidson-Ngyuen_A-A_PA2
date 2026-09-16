@@ -55,8 +55,8 @@ void Level::randomizeLevel() {
         int randInd = rand() % remaining;
 
         while (j < 5 && openSpots[j] <= 0) {
-            j++;
-        }
+                j++;
+            }
 
         char tile = 'x'; // Empty if all counts are exhausted.
 
@@ -122,7 +122,7 @@ void Level::populateGrid(){
 
 std::string Level::printLevel(){
     std::string print;
-    print += "==========\n";
+    print += "\n==========\n";
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             print += grid[i][j];
