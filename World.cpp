@@ -38,9 +38,8 @@ void World::setLevelGridElement(char c, int x , int y){
 
 int World::setLevel(){ //next level or not
     if (currentLevel + 1 >= L) {
-        return -1; // No next level.
+        return -2; // No next level.
     }
-
     currentLevel++;
     return currentLevel;
 }

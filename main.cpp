@@ -6,6 +6,7 @@
 int main(int argc, char*argv[]){
     if (argc != 3) {
         std::cout << "Not 3 arguments in command line." << std::endl;
+        return 1;
     }
     
     //creates a file processor object to use the text files to implement the game

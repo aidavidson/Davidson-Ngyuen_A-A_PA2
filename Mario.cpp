@@ -7,19 +7,17 @@ Mario::Mario(int lives){
     coins = 0;
     powerLevel = 0;
     beatEnemy = false;
+    enemiesDefeated = 0;
 }
-
 
 Mario::~Mario(){
 
 }
 
 void Mario::increasePower(int currentPower){
-    for(int i = 0; i < 3; i++){
-        if(powerLevels[i] == powerLevel && powerLevel != 2){
-            powerLevel = powerLevels[i+1];
-        }
-    }
+    if (powerLevel < 2) {
+        powerLevel++;
+}
 }
 
 void Mario::decreasePower(int currentPower, int amount){
@@ -40,12 +38,18 @@ void Mario::setBeatEnemy(bool tf){
     beatEnemy = tf;
 }
 void Mario::increaseDefeatedEnemies(){
-    enemiesDefeated += 1;
+    if (enemiesDefeated == 7) {
+        gainLives();
+        enemiesDefeated = 0;
+    } else {
+        enemiesDefeated += 1;
+    }
 }
 
 void Mario::loseLives(){
     V -= 1;
     enemiesDefeated = 0;
+    powerLevel = 0;
 }
 int Mario::getEnemiesDefeated(){
     return enemiesDefeated;
@@ -76,7 +80,13 @@ void Mario::gainLives(){
 }
 
 void Mario::collectCoin(){
-    coins += 1;
+    if (coins <= 20) {
+        coins += 1;
+    } else {
+        gainLives();
+        coins = 0;
+    }
+
 }
 int Mario::getCoins(){
     return coins;

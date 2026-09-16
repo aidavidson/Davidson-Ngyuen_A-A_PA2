@@ -11,10 +11,10 @@ Enemy::~Enemy(){
 }
 bool Enemy::fightMario(){
     int randomNumber = rand() % 100;
-    if(randomNumber <= percentWin){
+    if(randomNumber < percentWin){
         return true;
     }else{
-        if(player->getPower() > numDecrease){
+        if(player->getPower() >= numDecrease){
             player->decreasePower(player->getPower(), numDecrease);
         }else{
             player->loseLives();

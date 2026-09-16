@@ -28,20 +28,24 @@ int fileProcessor::processFile() {
     std::string val;
     int i = 0;
 
-    while (std::getline(inputFile, val)) {
-        arr[i] = std::stoi(val);
-        i++;
-    }
-
-    if (i != 8) {
+while (std::getline(inputFile, val)) {
+    if (i >= 8) {
+        std::cout << "Too many input values.\n";
         return 1;
     }
+    arr[i] = std::stoi(val);
+    i++;
+}
 
+    if (i != 8) {
+        std::cout << "Must have 8 values in the input file.\n";
+        return 1;
+    }
     int total = 0;
     for (int j = 3; j < 8; j++) {
         total += arr[j];
     }
-
+// Check the final count after reading.
     if (total != 100) {
         std::cout << "Input percentages must sum to 100.\n";
         return 1;

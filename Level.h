@@ -22,11 +22,12 @@ class Level {
         //not sure if needed
         bool lastLevel = false;
         // not sure if needed
-        char c, m, g, k ,b ,x ,w ,n; //c: coin, m: mushroom, g: goomba, k: koopaTroopa, b: level boss, x: nothing, w: warp pipe, H: mario
+        char c, m, g, k ,b ,x ,w; //c: coin, m: mushroom, g: goomba, k: koopaTroopa, b: level boss, x: nothing, w: warp pipe, H: mario
         // tests if the current level is the last one
         int currentLevel;
         // ensures that you cant get a level higher than max levels
         int numLevels;
+        int n;
     public:
         //constructors/destructors
         //not sure if needed

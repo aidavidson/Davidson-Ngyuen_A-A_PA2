@@ -35,8 +35,6 @@ class Game{
         void koopaAction();
         void bossAction();
         void warpAction();
-
-
 };
 
 #endif

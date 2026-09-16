@@ -14,6 +14,8 @@ Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int
     letters[3] = 'k';
     letters[4] = 'x';
     
+    this->currentLevel = currentLevel;
+    this->numLevels = numLevels;
     n = N; //level size
     grid = new char*[n]; //Array of char pointers
 
@@ -75,49 +77,29 @@ void Level::randomizeLevel() {
     }
 }
 
-// void Level::randomizeLevel(){
-//     //populateList is a static method from vector class
-//     randomizedLocations = Vector::populateList(n);
-//     int numFound = 0; //amount already randomized
-//     int j = 0;
-//     //randomizing for each 1d array in the grid
-//     for(int i = 0; i< n*n; i++){
-//         int remaining = n * n - i;
-        
-//         int randInd = rand() % remaining;
+void Level::populateGrid() {
+    for (int i = 0; i < n * n; i++) {
+        int row = randomizedLocations[i].getX();
+        int col = randomizedLocations[i].getY();
 
-//         if(randomizedLocations[randInd].getChosen() == false){
-//             randomizedLocations[randInd].setChosen(true);
-//             Vector temp;
-//             if(openSpots[j] != 0){
-//                 randomizedLocations[randInd].setType(letters[j]);
-//             }else{
-//                 j++;
-//             }
-//             temp = randomizedLocations[randInd];
-//             randomizedLocations[randInd] = randomizedLocations[n*n-1];
-//             randomizedLocations[n*n-1] = temp;
-//             numFound++;
-            
-//         }
-//     }   
-// }
-void Level::populateGrid(){
-    for(int i = 0; i < n*n; i++){
-        grid[randomizedLocations[i].getX()][randomizedLocations[i].getY()] = randomizedLocations[i].getType();
-    }
-    if(currentLevel != (numLevels-1)){
-        int randomX = rand() % n;
-        int randomY = rand() % n;
-
-        grid[randomX][randomY] = 'w';
+        grid[row][col] = randomizedLocations[i].getType();
     }
 
-    int randomX = rand() % n;
-    int randomY = rand() % n;
+    int bossRow = rand() % n;
+    int bossCol = rand() % n;
+    grid[bossRow][bossCol] = 'b';
 
-    grid[randomX][randomY] = 'b';
-    
+    if (currentLevel < numLevels - 1) {
+        int warpRow;
+        int warpCol;
+
+        do {
+            warpRow = rand() % n;
+            warpCol = rand() % n;
+        } while (warpRow == bossRow && warpCol == bossCol);
+
+        grid[warpRow][warpCol] = 'w';
+    }
 }
 
 std::string Level::printLevel(){
