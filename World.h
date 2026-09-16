@@ -1,5 +1,6 @@
 #ifndef WORLD_H
 #define WORLD_H
+#include <string>
 #include "Level.h" //no s since Level only one object
 
 class World {
@@ -11,7 +12,6 @@ class World {
         World(int L, int N, int percentCoin, 
         int percentMushroom, int percentGoombas,
         int percentKoopas, int percentNothing, int currentLevel);
-        World();
         ~World();
         int setLevel();
         int getLevel();
