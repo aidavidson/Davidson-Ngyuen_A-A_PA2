@@ -68,7 +68,7 @@ std::string Game::gameText(){
     txt += std::to_string(mario->getY());
     txt += "). Mario is at power level ";
     txt += std::to_string(mario->getPower());
-    txt += ".";
+    txt += ". ";
     return txt;
 }
 
@@ -78,19 +78,19 @@ std::string Game::finishGameTxt(){
     txt += std::to_string(mario->getLives());
     txt += " lives left. Mario has ";
     txt += std::to_string(mario->getCoins());
-    txt += " coins.";
+    txt += " coins. ";
     return txt;
 }
 //local function declarations for repeated action
 
 
+//
 void Game::repeatedAction(){
     std::string direction;
     int increments = 0;
     
     
     while(mario->getLives() != 0 && marioImpacts->isGameWon() == false){ 
-
         instancefp->addToOutput(world->levelPrint(world->getLevel())); //add to the fileprocessor pointer
         if(increments == 0){
             instancefp->addToOutput(marioPosText());

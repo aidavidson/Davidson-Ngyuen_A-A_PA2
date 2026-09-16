@@ -28,6 +28,14 @@ class Game{
         std::string marioPosText();
         std::string gameText();
         std::string finishGameTxt();
+        void nothingAction();
+        void mushroomAction();
+        void coinAction();
+        void goombaAction();
+        void koopaAction();
+        void bossAction();
+        void warpAction();
+
 
 };
 
