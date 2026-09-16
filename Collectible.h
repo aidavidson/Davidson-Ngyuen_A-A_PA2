@@ -17,7 +17,5 @@ class Collectible{
         void collectCoin();
         // increases marios Power
         void collectMushroom();
-        // if mario collides with warp pipe enter new level
-        void warpPipe();
 };
 #endif

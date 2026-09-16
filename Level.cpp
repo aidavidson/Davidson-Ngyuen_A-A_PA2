@@ -16,6 +16,7 @@ Level::Level(int N, int coins, int mushrooms, int goombas, int koopaTroopas, int
     
     this->currentLevel = currentLevel;
     this->numLevels = numLevels;
+    
     n = N; //level size
     grid = new char*[n]; //Array of char pointers
 

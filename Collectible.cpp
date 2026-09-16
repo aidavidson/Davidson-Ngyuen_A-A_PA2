@@ -7,6 +7,7 @@ Collectible::Collectible(std::string type, Mario* mario){
 Collectible::~Collectible(){
     
 }
+
 void Collectible::collectCoin(){
     // just collects coin in mario class
     player->collectCoin();

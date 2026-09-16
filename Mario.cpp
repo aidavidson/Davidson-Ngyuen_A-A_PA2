@@ -17,32 +17,29 @@ Mario::~Mario(){
 void Mario::increasePower(int currentPower){
     if (powerLevel < 2) {
         powerLevel++;
-}
+    }
 }
 
 void Mario::decreasePower(int currentPower, int amount){
-    //why do we need a for loop here?
-    // for(int i = 2; i >= 0; i--){
-    //     if(powerLevels[i] == powerLevel && powerLevel != 0){
-    //         powerLevel = powerLevels[i-amount];
-    //     }
-    // }
-
     powerLevel -= amount;
     if (powerLevel < 0) {
         powerLevel = 0;
     }
 
 }
+
 void Mario::setBeatEnemy(bool tf){
     beatEnemy = tf;
 }
-void Mario::increaseDefeatedEnemies(){
-    if (enemiesDefeated == 7) {
+
+void Mario::increaseDefeatedEnemies() {
+    if (enemiesDefeated < 6) {
+        enemiesDefeated++;
+    } else if (enemiesDefeated == 6) {
         gainLives();
-        enemiesDefeated = 0;
+        enemiesDefeated++;
     } else {
-        enemiesDefeated += 1;
+        enemiesDefeated++;
     }
 }
 
@@ -80,7 +77,7 @@ void Mario::gainLives(){
 }
 
 void Mario::collectCoin(){
-    if (coins <= 20) {
+    if (coins < 19) {
         coins += 1;
     } else {
         gainLives();

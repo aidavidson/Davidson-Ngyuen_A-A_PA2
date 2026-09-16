@@ -19,7 +19,6 @@ class fileProcessor{
         int processFile();
         int accessVal(int index); //for the 
         int outputFile();
-        void printInteraction();
         void addToOutput(std::string txt);
 };
 

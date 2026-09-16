@@ -26,17 +26,8 @@ Environment::~Environment() {
     delete Mushroom;
 }
 
-// void Environment::nextLevel(){
-//     if(currentLevel->isComplete()) {
-//         //move on to next level
-//     }
-// }
-
-void Environment::gameOver(){
-    
-}
-
 std::string Environment::marioMove(fileProcessor* fp){
+    //move random direction
     int randomVal = rand() % 4;
     switch(randomVal){
         case 0:
@@ -77,17 +68,22 @@ std::string Environment::marioMove(fileProcessor* fp){
     }
 }
 
+//getter
 bool Environment::isGameWon(){
     return gameComplete;
 }
 
+//setter
 void Environment::markGameWon() {
     gameComplete = true;
 }
 
+//enemy interacts with mario
 bool Environment::fightMario(Enemy* enemy){
     return enemy->fightMario();
 }
+
+
 void Environment::marioCollect(Collectible* collectible, std::string which){
     if(which == "Coin"){
         collectible->collectCoin();

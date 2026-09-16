@@ -64,7 +64,6 @@ int fileProcessor::accessVal(int index){
     return arr[index];
 }
 
-
 //printing to file
 int fileProcessor::outputFile(){
     std::ofstream outputFile(outputTxt);

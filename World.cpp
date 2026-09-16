@@ -15,7 +15,7 @@ World::World(int L, int N, int percentCoin,
         levels[i] = newLevel;
     }
     currentLevel = -1;
-};
+}
 
 //destructor
 World::~World() {
@@ -23,7 +23,7 @@ World::~World() {
         delete levels[i]; 
     }
     delete[] levels; //delete array
-};
+}
 
 int World::getLevel(){
     return currentLevel;
